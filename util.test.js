@@ -26,9 +26,15 @@ test('should generate a valid text output', () => {
   expect(text).toBe('Max (29 years old)');
 });
 
+// MEMO: E2E Test (UI Test)
 test('should create an element with text and correct class', async () => {
   const browser = await puppeteer.launch({
+    // MEMO: speed up the testing because now it doesn't have to go through that step in a real browser
+    // MEMO: it does so behind the scenes
+    // MEMO: that's one of the advantages of having a headless browser that you don't have to watch the executed steps
     headless: true
+
+    // MEMO: but it can be nice to see the steps
     // headless: false, // MEMO: run a browser with a UI
     // slowMo: 80, // MEMO: slow down the operation so that we have a chance of seeing what's happening
     // args: ['--window-size=1920,1080'] // MEMO: should lanuch a browser with this size
