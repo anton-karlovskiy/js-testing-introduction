@@ -39,7 +39,7 @@ test('should create an element with text and correct class', async () => {
     // slowMo: 80, // MEMO: slow down the operation so that we have a chance of seeing what's happening
     // args: ['--window-size=1920,1080'] // MEMO: should lanuch a browser with this size
   });
-  const page = await browser.newPage('');
+  const page = await browser.newPage();
   await page.goto('file:///F:/07_development/js-testing-introduction/index.html');
   // MEMO: you can find all commands in the official puppeteer docs
   await page.click('input#name');
@@ -48,5 +48,6 @@ test('should create an element with text and correct class', async () => {
   await page.type('input#age', '28');
   await page.click('#btnAddUser');
   const finalText = await page.$eval('.user-item', el => el.textContent);
+  await browser.close();
   expect(finalText).toBe('Anna (28 years old)');
 }, 10000);
